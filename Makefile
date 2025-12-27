@@ -6,4 +6,6 @@ build_arm64:
 	export GOOS=linux  GOARCH=arm64;\
 	go build -o ./out/cronweb-aarch64
 
-build: build_x86 build_arm64
+build_webapp:
+	bun run build
+build: build_webapp build_x86 build_arm64
