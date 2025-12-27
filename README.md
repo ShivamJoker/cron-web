@@ -33,6 +33,14 @@ chmod +x ./cronweb-$(uname -m)
 sudo mv cronweb-$(uname -m) /usr/local/bin/cronweb
 ```
 
+### Copy paste script
+
+```sh
+wget https://github.com/ShivamJoker/cron-web/releases/download/latest/cronweb-$(uname -m)
+chmod +x ./cronweb-$(uname -m)
+sudo mv cronweb-$(uname -m) /usr/local/bin/cronweb
+```
+
 ## How to start cron web server
 
 Run the executable, it takes http address and port as an optional argument.
