@@ -1,0 +1,49 @@
+.menu-btn-group {
+  width: 185px;
+}
+
+.menu-btn-group div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  min-width: 700px !important;
+}
+
+.cmd-input {
+  font-family: monospace;
+}
+
+td:has(small) {
+  width: 350px;
+}
+
+.menu-btn-group button {
+  border-color: transparent;
+}
+
+.rotating {
+  animation: linear 1500ms rotate infinite;
+}
+
+tr td input {
+  margin-bottom: 0 !important;
+}
+
+td.cron-exp {
+  width: 200px;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  button img {
+    filter: invert(1);
+  }
+}

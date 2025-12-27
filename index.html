@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRON Manager</title>
+
+    <link rel="stylesheet" href="./src/style.css" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/@picocss/pico/css/pico.jade.css"
+    />
+  </head>
+  <body>
+    <main id="app" x-data="cronjobs" class="container">
+      <nav>
+        <ul>
+          <li><h3>CRON manager</h3></li>
+        </ul>
+        <ul>
+          <li>
+            <button class="outline" @click="refreshCrontabs">
+              <img
+                src="refresh-icon.svg"
+                x-bind:class="refreshing ? 'rotating' : ''"
+                height="24px"
+                width="24px"
+              />
+            </button>
+          </li>
+          <li>
+            <button @click="addNewCrontab">Add new CRON</button>
+          </li>
+        </ul>
+      </nav>
+      <div class="overflow-auto">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Expression</th>
+              <th>Description</th>
+              <th>Command / Job</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="(item, idx) in items">
+              <tr>
+                <td class="cron-exp">
+                  <strong x-show="!item.editing" x-text="item.Cron"></strong>
+                  <template x-if="item.editing">
+                    <input
+                      x-model="item.Cron"
+                      x-bind:aria-invalid="!item.isValid"
+                      type="text"
+                    />
+                  </template>
+                </td>
+                <td>
+                  <small x-text="item.explanation"></small>
+                </td>
+                <td>
+                  <code x-show="!item.editing" x-text="item.Job"></code>
+                  <template x-if="item.editing">
+                    <input class="cmd-input" x-model="item.Job" type="text" />
+                  </template>
+                </td>
+                <td class="menu-btn-group">
+                  <div>
+                    <template x-if="item.editing">
+                      <button :disabled="!item.isValid" @click="saveEdit(idx)">
+                        Update
+                      </button>
+                    </template>
+                    <div x-show="!item.editing">
+                      <button
+                        @click="toggleEdit(idx)"
+                        class="outline"
+                        title="Edit this cron job"
+                      >
+                        <img src="edit-icon.svg" height="24px" width="24px" />
+                      </button>
+                      <button
+                        @click="deleteCrontab(idx)"
+                        class="outline"
+                        title="Delete this cron job"
+                      >
+                        <img src="delete-icon.svg" height="24px" width="24px" />
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
