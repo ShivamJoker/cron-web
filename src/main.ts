@@ -5,9 +5,7 @@ import { Notyf } from "notyf";
 import "notyf/notyf.min.css";
 const notyf = new Notyf({ position: { y: "top", x: "center" } });
 
-const API = Wretch("http://localhost:8070/crontab", {}).resolve((res) =>
-  res.json<CronItem[]>(),
-);
+const API = Wretch("/crontab", {}).resolve((res) => res.json<CronItem[]>());
 
 type CronItem = {
   Cron: string;
