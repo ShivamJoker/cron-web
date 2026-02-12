@@ -7,5 +7,5 @@ build_arm64:
 	go build -o ./out/cronweb-aarch64
 
 build_webapp:
-	bun run build
+	bun run build --base="./"
 build: build_webapp build_x86 build_arm64
