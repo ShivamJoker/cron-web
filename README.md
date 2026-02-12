@@ -62,6 +62,7 @@ cronweb localhost:9090
 Description=Cronweb
 
 [Service]
+User=your-user
 ExecStart=/usr/local/bin/cronweb
 
 [Install]
