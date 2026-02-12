@@ -48,3 +48,52 @@ Run the executable, it takes http address and port as an optional argument.
 ```sh
 cronweb localhost:9090
 ```
+
+## Systemd Service
+
+### Create a systemd unit file with vim
+
+`vim /etc/systemd/system/cronweb.service`
+
+### Edit the service config
+
+```sh
+[Unit]
+Description=Cronweb
+
+[Service]
+ExecStart=/usr/local/bin/cronweb
+
+[Install]
+WantedBy=multi-user.target
+```
+Save and exit from the vim `:wq`
+
+## Enable the service
+
+Tell systemd it has got a new service to run
+
+```sh
+sudo systemctl daemon-reload
+```
+
+Enable and start the cronweb service
+
+```sh
+sudo systemctl enable --now cronweb
+```
+
+Now you are all set to keep the service running forever
+
+## Serve at subpath (Caddy example)
+
+If you would like to access the cronweb portal from a subpath like `homelab.local/cronweb` you can setup reverse proxy.
+
+```sh
+example.com {
+        redir /cronweb /cronweb/ # redirect to path with / (won't work without)
+        handle_path /cronweb/* {
+                reverse_proxy localhost:8816 # Cron web
+        }
+}
+```
