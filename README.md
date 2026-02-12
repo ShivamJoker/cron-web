@@ -5,7 +5,7 @@ Uses the default [crontab](https://www.man7.org/linux/man-pages/man5/crontab.5.h
 <img width="1409" height="679" alt="image" src="https://github.com/user-attachments/assets/0d61c07b-4578-4dfa-8279-6e3a766dfbc6" />
 
 ## Features
-- Single binary ~8 MB (no need to install anything else)
+- Single binary ~8 MB (no need to install anything else, apart fron crontab)
 - CRON experssion explanation
 - CRON validation
 - Easy to use web interface
@@ -18,13 +18,13 @@ Download the compatible version for your operating system.
 This script will download the compatible binary (`aarch64`, `x86_64`).
 
 ```sh
-wget https://github.com/ShivamJoker/cron-web/releases/download/latest/cronweb-$(uname -m)
+wget https://github.com/ShivamJoker/cron-web/releases/latest/download/cronweb-$(uname -m)
 ```
 
 ### Make sure it's has executable permission
 
 ```sh
-chmod +x ./cronweb-$(uname -m)
+chmod +x ./cronweb-*
 ```
 
 ### Move the binary to `bin` (optional)
@@ -36,8 +36,8 @@ sudo mv cronweb-$(uname -m) /usr/local/bin/cronweb
 ### Copy paste script
 
 ```sh
-wget https://github.com/ShivamJoker/cron-web/releases/download/latest/cronweb-$(uname -m)
-chmod +x ./cronweb-$(uname -m)
+wget https://github.com/ShivamJoker/cron-web/releases/latest/download/cronweb-$(uname -m)
+chmod +x ./cronweb-*
 sudo mv cronweb-$(uname -m) /usr/local/bin/cronweb
 ```
 
